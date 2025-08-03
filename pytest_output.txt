@@ -1,0 +1,1464 @@
+============================= test session starts ==============================
+platform linux -- Python 3.8.10, pytest-7.4.0, pluggy-1.5.0
+rootdir: /home/testuser/projects/logiq
+collected 80 items
+
+tests/test_api.py ....FFEE.EEEEEEE.                                      [ 21%]
+tests/test_auth.py FFFFFEFF                                              [ 31%]
+tests/test_auth_jwt.py FFF..                                             [ 37%]
+tests/test_auth_parser.py FFF.....                                       [ 47%]
+tests/test_brute_force.py FFFFF                                          [ 53%]
+tests/test_db_mongo.py ..F..F                                            [ 61%]
+tests/test_detector.py F..F                                              [ 66%]
+tests/test_export.py EE.                                                 [ 70%]
+tests/test_ratelimit.py E                                                [ 71%]
+tests/test_register.py FF                                                [ 73%]
+tests/test_report_export.py .E.EE                                        [ 80%]
+tests/test_routes_basic.py .FFFFFFFFFF                                   [ 93%]
+tests/test_user_and_report.py FFEEE                                      [100%]
+
+==================================== ERRORS ====================================
+__________________ ERROR at setup of test_get_events_filters ___________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+________________ ERROR at setup of test_get_events_date_filters ________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+____________ ERROR at setup of test_get_alerts_with_valid_threshold ____________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________ ERROR at setup of test_get_alerts_no_alerts __________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________ ERROR at setup of test_get_alerts_with_time_window ______________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________ ERROR at setup of test_get_alerts _______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________ ERROR at setup of test_export_json_success __________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________ ERROR at setup of test_export_csv_success ___________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_______________ ERROR at setup of test_export_unsupported_format _______________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_______________ ERROR at setup of test_access_with_correct_token _______________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________ ERROR at setup of test_export_json ______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________ ERROR at setup of test_export_csv _______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________ ERROR at setup of test_rate_limit_exceeded __________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+____________________ ERROR at setup of test_report_success _____________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________ ERROR at setup of test_export_json_success __________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________ ERROR at setup of test_export_csv_success ___________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+___________________ ERROR at setup of test_report_with_token ___________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________ ERROR at setup of test_export_json ______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________ ERROR at setup of test_export_csv _______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.fixture(scope="function")
+    def auth_token(client, mock_db_connection):
+        """
+        Fixture to get an authentication token for a test user.
+        Registers a user and logs them in.
+        """
+        # Ensure the user doesn't exist from previous tests
+        mock_db = mock_db_connection
+        mock_db.users.delete_many({"username": "testuser"})
+    
+        # Register a test user
+        client.post('/register', json={'username': 'testuser', 'password': 'testpassword'})
+    
+        # Log in the test user to get a token
+        response = client.post('/login', json={'username': 'testuser', 'password': 'testpassword'})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/conftest.py:279: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+=================================== FAILURES ===================================
+_______________________ test_get_security_events_success _______________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+auth_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1Mzk5MjkwOCwianRpIjoiMTgzY2E1ZGQtNjdkZi00NmQ4LTli...MzZiYzA2N2EtNmQyNi00YTJiLTlmOTQtYTFkNzk5YjczZGZiIiwiZXhwIjoxNzUzOTkzODA4fQ.oFtUg5RiBH6whSDHrmaDjLs63-Iq-cgzbVOnLGb6KYI'
+
+    def test_get_security_events_success(client, mock_db_connection, auth_token):
+        headers = {"Authorization": f"Bearer {auth_token}"}
+        # Add some mock events
+        mock_db_connection.events.insert_one({
+            "timestamp": datetime.utcnow().isoformat(),
+            "event_type": "login_success",
+            "username": "user1",
+            "ip": "1.1.1.1"
+        })
+        mock_db_connection.events.insert_one({
+            "timestamp": datetime.utcnow().isoformat(),
+            "event_type": "logout",
+            "username": "user2",
+            "ip": "2.2.2.2"
+        })
+    
+        response = client.get("/events", headers=headers)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <WrapperTestResponse streamed [500 INTERNAL SERVER ERROR]>.status_code
+
+tests/test_api.py:82: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:333 Error retrieving security events by testuser:
+Traceback (most recent call last):
+  File "/home/testuser/projects/logiq/api/routes.py", line 318, in get_security_events
+    for event in events_cursor:
+  File "/usr/lib/python3.8/unittest/mock.py", line 1889, in method
+    return func(self, *args, **kw)
+TypeError: iter_mock() takes 0 positional arguments but 1 was given
+__________________________ test_get_events_pagination __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+auth_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1Mzk5MjkwOSwianRpIjoiNjAwM2I1NTMtMGE1Ny00YmQ2LWFi...YjFmYmUzZDEtY2VlMi00MmMzLWIwMjItNDc5YjRjNDBlZjc3IiwiZXhwIjoxNzUzOTkzODA5fQ.E1Xg_Io4eYtwWDoT6XL6Pj1I-RaWsv7UyCGWxm3BFZw'
+
+    def test_get_events_pagination(client, mock_db_connection, auth_token):
+        headers = {"Authorization": f"Bearer {auth_token}"}
+        # Add 10 events
+        for i in range(10):
+            mock_db_connection.events.insert_one({
+                "timestamp": datetime.utcnow().isoformat(),
+                "event_type": f"event_{i}",
+                "username": f"user_{i}",
+                "ip": f"192.168.0.{i}"
+            })
+    
+        # Test page 1, per_page 3
+        response = client.get("/events?page=1&per_page=3", headers=headers)
+        data = response.get_json()
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <WrapperTestResponse 369 bytes [500 INTERNAL SERVER ERROR]>.status_code
+
+tests/test_api.py:104: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:333 Error retrieving security events by testuser:
+Traceback (most recent call last):
+  File "/home/testuser/projects/logiq/api/routes.py", line 318, in get_security_events
+    for event in events_cursor:
+  File "/usr/lib/python3.8/unittest/mock.py", line 1889, in method
+    return func(self, *args, **kw)
+TypeError: iter_mock() takes 0 positional arguments but 1 was given
+____________________________ test_register_success _____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_success(client, mock_db_connection):
+        # Mock the bcrypt.hashpw function to return a consistent hash for testing
+        with patch('bcrypt.hashpw', return_value=b'hashed_password_mock'):
+            response = client.post("/register", json={"username": "newuser", "password": "newpassword"})
+>           assert response.status_code == 201
+E           assert 429 == 201
+E            +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth.py:12: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________ test_register_existing_user __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_existing_user(client, mock_db_connection):
+        # Add an existing user to the mock database
+        mock_db_connection.users.insert_one({"username": "existinguser", "password": b"somehash"})
+    
+        with patch('bcrypt.hashpw', return_value=b'hashed_password_mock'):
+            response = client.post("/register", json={"username": "existinguser", "password": "password"})
+>           assert response.status_code == 409
+E           assert 429 == 409
+E            +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth.py:25: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________________ test_login_success ______________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fbf9030b730>
+
+    def test_login_success(client, mock_db_connection, monkeypatch):
+        username = "testuser"
+        password = "testpassword"
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": username, "password": hashed_password})
+    
+        # Mock bcrypt.checkpw to always return True for the testuser and testpassword
+        def mock_checkpw(password_bytes, hashed_password_bytes):
+            return True
+        monkeypatch.setattr(bcrypt, "checkpw", mock_checkpw)
+    
+        response = client.post("/login", json={"username": username, "password": password})
+>       assert response.status_code == 200
+E       assert 429 == 200
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth.py:42: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+___________________________ test_login_unregistered ____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_login_unregistered(client, mock_db_connection):
+        response = client.post("/login", json={"username": "nonexistent", "password": "password"})
+>       assert response.status_code == 401
+E       assert 429 == 401
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth.py:48: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+________________________ test_login_incorrect_password _________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fbf9032f610>
+
+    def test_login_incorrect_password(client, mock_db_connection, monkeypatch):
+        username = "testuser"
+        password = "testpassword"
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": username, "password": hashed_password})
+    
+        # Mock bcrypt.checkpw to always return False for incorrect password
+        def mock_checkpw(password_bytes, hashed_password_bytes):
+            return False
+        monkeypatch.setattr(bcrypt, "checkpw", mock_checkpw)
+    
+        response = client.post("/login", json={"username": username, "password": "wrongpassword"})
+>       assert response.status_code == 401
+E       assert 429 == 401
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth.py:65: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________________ test_access_without_token ___________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+
+    def test_access_without_token(client):
+        response = client.get("/status")
+>       assert response.status_code == 401
+E       assert 200 == 401
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+tests/test_auth.py:79: AssertionError
+________________________ test_access_with_invalid_token ________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+
+    def test_access_with_invalid_token(client):
+        headers = {"Authorization": "Bearer invalid_token"}
+        response = client.get("/status", headers=headers)
+>       assert response.status_code == 422 # 422 Unprocessable Entity for invalid token structure
+E       assert 200 == 422
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+tests/test_auth.py:87: AssertionError
+________________________ test_register_login_and_access ________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_login_and_access(client, mock_db_connection):
+        user_data = {"username": "newtestuser_jwt", "password": "testpass"}
+        # mock_db_connection.users.delete_many({"username": user_data["username"]}) # Not needed, mock_db_connection resets data per test
+    
+        # Εγγραφή χρήστη
+        response = client.post("/register", json=user_data)
+        # The register endpoint returns 201 on success
+>       assert response.status_code == 201, f"Registration failed with status {response.status_code}: {response.get_json()}"
+E       AssertionError: Registration failed with status 429: {'error': '5 per 1 minute'}
+E       assert 429 == 201
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth_jwt.py:13: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________ test_register_existing_user __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_existing_user(client, mock_db_connection):
+        user_data = {"username": "existinguser", "password": "pass123"}
+        # Manually insert user into mock DB to simulate existing user
+        # Store password as bytes, as it's hashed and stored as bytes by the app
+        hashed_pass = hashpw(user_data["password"].encode('utf-8'), gensalt())
+        mock_db_connection.users.insert_one({"username": user_data["username"], "password": hashed_pass})
+    
+        response = client.post("/register", json=user_data)
+>       assert response.status_code == 409, f"Expected 409 for existing user, got {response.status_code}: {response.get_json()}"
+E       AssertionError: Expected 409 for existing user, got 429: {'error': '5 per 1 minute'}
+E       assert 429 == 409
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth_jwt.py:35: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________________ test_login_wrong_password ___________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_login_wrong_password(client, mock_db_connection):
+        user_data = {"username": "user_wrong_pass", "password": "correctpass"}
+        # Insert user with hashed password (as bytes)
+        hashed = hashpw(user_data["password"].encode(), gensalt())
+        mock_db_connection.users.insert_one({"username": user_data["username"], "password": hashed}) # Store as bytes, not decoded string
+    
+        wrong_pass_data = {"username": user_data["username"], "password": "wrongpass"}
+        response = client.post("/login", json=wrong_pass_data)
+>       assert response.status_code == 401, f"Expected 401 for wrong password, got {response.status_code}: {response.get_json()}"
+E       AssertionError: Expected 401 for wrong password, got 429: {'error': '5 per 1 minute'}
+E       assert 429 == 401
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_auth_jwt.py:46: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_ test_parse_auth_log_valid[Jan  5 01:02:03 myhost sshd[1234]: Accepted password for alice from 192.0.2.1-expected0] _
+
+log_line = 'Jan  5 01:02:03 myhost sshd[1234]: Accepted password for alice from 192.0.2.1'
+expected = {'event_type': 'accepted', 'host': 'myhost', 'ip': '192.0.2.1', 'user': 'alice'}
+
+    @ pytest.mark.parametrize("log_line, expected", [
+        (
+            make_log('Jan',  5, '01:02:03', 'myhost', 'Accepted', 'alice', '192.0.2.1'),
+            {'host': 'myhost', 'event_type': 'accepted', 'user': 'alice', 'ip': '192.0.2.1'}
+        ),
+        (
+            make_log('Feb', 14, '23:59:59', 'server1', 'Failed', 'bob', '10.0.0.5'),
+            {'host': 'server1', 'event_type': 'failed', 'user': 'bob', 'ip': '10.0.0.5'}
+        ),
+        (
+            make_log('Mar',  9, '12:00:00', 'hostX', 'Failed', 'eve', '203.0.113.9', invalid_user=True),
+            {'host': 'hostX', 'event_type': 'failed', 'user': 'eve', 'ip': '203.0.113.9'}
+        ),
+    ])
+    def test_parse_auth_log_valid(log_line, expected):
+        result = parse_auth_log(log_line)
+        assert isinstance(result, dict)
+        # Check timestamp year is current year and matches month/day/time
+        now_year = datetime.now().year
+        ts = result['timestamp']
+        assert ts.year == now_year
+        # Compare host, event_type, user, ip
+        for key in ('host', 'event_type', 'user', 'ip'):
+>           assert result[key] == expected[key]
+E           KeyError: 'user'
+
+tests/test_auth_parser.py:32: KeyError
+_ test_parse_auth_log_valid[Feb 14 23:59:59 server1 sshd[1234]: Failed password for bob from 10.0.0.5-expected1] _
+
+log_line = 'Feb 14 23:59:59 server1 sshd[1234]: Failed password for bob from 10.0.0.5'
+expected = {'event_type': 'failed', 'host': 'server1', 'ip': '10.0.0.5', 'user': 'bob'}
+
+    @ pytest.mark.parametrize("log_line, expected", [
+        (
+            make_log('Jan',  5, '01:02:03', 'myhost', 'Accepted', 'alice', '192.0.2.1'),
+            {'host': 'myhost', 'event_type': 'accepted', 'user': 'alice', 'ip': '192.0.2.1'}
+        ),
+        (
+            make_log('Feb', 14, '23:59:59', 'server1', 'Failed', 'bob', '10.0.0.5'),
+            {'host': 'server1', 'event_type': 'failed', 'user': 'bob', 'ip': '10.0.0.5'}
+        ),
+        (
+            make_log('Mar',  9, '12:00:00', 'hostX', 'Failed', 'eve', '203.0.113.9', invalid_user=True),
+            {'host': 'hostX', 'event_type': 'failed', 'user': 'eve', 'ip': '203.0.113.9'}
+        ),
+    ])
+    def test_parse_auth_log_valid(log_line, expected):
+        result = parse_auth_log(log_line)
+        assert isinstance(result, dict)
+        # Check timestamp year is current year and matches month/day/time
+        now_year = datetime.now().year
+        ts = result['timestamp']
+        assert ts.year == now_year
+        # Compare host, event_type, user, ip
+        for key in ('host', 'event_type', 'user', 'ip'):
+>           assert result[key] == expected[key]
+E           KeyError: 'user'
+
+tests/test_auth_parser.py:32: KeyError
+_ test_parse_auth_log_valid[Mar  9 12:00:00 hostX sshd[1234]: Failed password for invalid user eve from 203.0.113.9-expected2] _
+
+log_line = 'Mar  9 12:00:00 hostX sshd[1234]: Failed password for invalid user eve from 203.0.113.9'
+expected = {'event_type': 'failed', 'host': 'hostX', 'ip': '203.0.113.9', 'user': 'eve'}
+
+    @ pytest.mark.parametrize("log_line, expected", [
+        (
+            make_log('Jan',  5, '01:02:03', 'myhost', 'Accepted', 'alice', '192.0.2.1'),
+            {'host': 'myhost', 'event_type': 'accepted', 'user': 'alice', 'ip': '192.0.2.1'}
+        ),
+        (
+            make_log('Feb', 14, '23:59:59', 'server1', 'Failed', 'bob', '10.0.0.5'),
+            {'host': 'server1', 'event_type': 'failed', 'user': 'bob', 'ip': '10.0.0.5'}
+        ),
+        (
+            make_log('Mar',  9, '12:00:00', 'hostX', 'Failed', 'eve', '203.0.113.9', invalid_user=True),
+            {'host': 'hostX', 'event_type': 'failed', 'user': 'eve', 'ip': '203.0.113.9'}
+        ),
+    ])
+    def test_parse_auth_log_valid(log_line, expected):
+        result = parse_auth_log(log_line)
+>       assert isinstance(result, dict)
+E       assert False
+E        +  where False = isinstance(None, dict)
+
+tests/test_auth_parser.py:25: AssertionError
+________________________ test_detect_brute_force_basic _________________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.mark.usefixtures('mock_db_connection')
+    def test_detect_brute_force_basic(mock_db_connection):
+        # Insert some failed login events
+        events = [
+            make_event('192.168.1.1', 'user1', 5),
+            make_event('192.168.1.1', 'user2', 4),
+            make_event('192.168.1.2', 'user3', 3),
+            make_event('192.168.1.1', 'user1', 2),
+            make_event('192.168.1.1', 'user2', 1),
+        ]
+>       mock_db_connection.events.insert_many(events)
+E       AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+tests/test_brute_force.py:25: AttributeError
+______________________ test_detect_brute_force_no_alerts _______________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.mark.usefixtures('mock_db_connection')
+    def test_detect_brute_force_no_alerts(mock_db_connection):
+        # Insert events below the threshold
+        events = [
+            make_event('192.168.1.1', 'user1', 5),
+            make_event('192.168.1.1', 'user2', 4),
+        ]
+>       mock_db_connection.events.insert_many(events)
+E       AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+tests/test_brute_force.py:48: AttributeError
+_____________________ test_detect_brute_force_time_window ______________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.mark.usefixtures('mock_db_connection')
+    def test_detect_brute_force_time_window(mock_db_connection):
+        now = datetime.utcnow()
+        # Events within the 10-minute window
+        events = [
+            make_event('10.0.0.1', 'userA', 5),
+            make_event('10.0.0.1', 'userB', 3),
+            make_event('10.0.0.1', 'userC', 1),
+            # Event outside the 10-minute window
+            make_event('10.0.0.1', 'userD', 15),
+        ]
+>       mock_db_connection.events.insert_many(events)
+E       AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+tests/test_brute_force.py:65: AttributeError
+____________________ test_detect_brute_force_missing_fields ____________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.mark.usefixtures('mock_db_connection')
+    def test_detect_brute_force_missing_fields(mock_db_connection):
+        # Insert events with missing 'ip' or 'username'
+        events = [
+            {"timestamp": datetime.utcnow(), "event_type": "failed", "username": "testuser"}, # Missing IP
+            {"timestamp": datetime.utcnow(), "event_type": "failed", "ip": "1.2.3.4"}, # Missing Username
+            {"timestamp": datetime.utcnow(), "event_type": "failed", "ip": "1.2.3.4", "username": "testuser"},
+            {"timestamp": datetime.utcnow(), "event_type": "failed", "ip": "1.2.3.4", "username": "testuser"},
+            {"timestamp": datetime.utcnow(), "event_type": "failed", "ip": "1.2.3.4", "username": "testuser"},
+        ]
+>       mock_db_connection.events.insert_many(events)
+E       AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+tests/test_brute_force.py:90: AttributeError
+________________ test_detect_brute_force_pipeline_and_scrubbing ________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    @pytest.mark.usefixtures('mock_db_connection')
+    def test_detect_brute_force_pipeline_and_scrubbing(mock_db_connection):
+        # Insert events that span inside and outside the default window (60 minutes)
+        events = [
+            make_event('10.0.0.1', 'admin', 10),
+            make_event('10.0.0.1', 'root', 30),
+            make_event('10.0.0.2', 'user', 70), # Outside default 60 min window
+            make_event('10.0.0.1', 'guest', 5),
+            make_event('10.0.0.1', 'admin', 2),
+        ]
+>       mock_db_connection.events.insert_many(events)
+E       AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+tests/test_brute_force.py:119: AttributeError
+__________________________ test_insert_events_success __________________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_insert_events_success(mock_db_connection):
+        # Use the mock_db_connection fixture from conftest
+        db = mock_db_connection
+        db.events.data = [] # Ensure collection is empty
+    
+        events_to_insert = [
+            {"event_type": "login", "username": "user1", "timestamp": datetime.utcnow()},
+            {"event_type": "logout", "username": "user2", "timestamp": datetime.utcnow()}
+        ]
+    
+        # We rely on the actual MockCollection.insert_many behavior, no need to patch it here.
+>       inserted_count = db_mongo_module.insert_events(db, events_to_insert)
+
+tests/test_db_mongo.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+db = <conftest.MockDB object at 0x7fbf911b2d60>
+events = [{'event_type': 'login', 'timestamp': datetime.datetime(2025, 7, 31, 20, 15, 11, 68859), 'username': 'user1'}, {'event_type': 'logout', 'timestamp': datetime.datetime(2025, 7, 31, 20, 15, 11, 68862), 'username': 'user2'}]
+
+    def insert_events(db, events: list):
+        """
+        Εισάγει γεγονότα στη συλλογή "events".
+    
+        Args:
+            db: Αντικείμενο βάσης δεδομένων MongoDB.
+            events (list): Λίστα dict με γεγονότα.
+    
+        Returns:
+            int: Πλήθος επιτυχώς εισαχθέντων εγγραφών.
+        """
+        if db is None or not events:
+            return 0
+    
+        try:
+>           result = db.events.insert_many(events)
+E           AttributeError: 'MockCollection' object has no attribute 'insert_many'
+
+db/db_mongo.py:38: AttributeError
+________________________ test_insert_events_mongo_error ________________________
+
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_insert_events_mongo_error(mock_db_connection):
+        db = mock_db_connection
+        events_to_insert = [
+            {"event_type": "login", "username": "user1", "timestamp": datetime.utcnow()}
+        ]
+    
+        # Patch insert_many to raise an exception
+>       with patch.object(db.events, 'insert_many', side_effect=PyMongoError("Simulated insert error")) as mock_insert_many:
+
+tests/test_db_mongo.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.8/unittest/mock.py:1393: in __enter__
+    original, local = self.get_original()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <unittest.mock._patch object at 0x7fbf9030bd30>
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+>           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: <conftest.MockCollection object at 0x7fbf911b2e80> does not have the attribute 'insert_many'
+
+/usr/lib/python3.8/unittest/mock.py:1366: AttributeError
+________________________ test_detect_brute_force_basic _________________________
+
+    def test_detect_brute_force_basic():
+        now = datetime.utcnow() # Use utcnow for consistency with Flask app
+        events = [
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=1)},
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=2)},
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=3)},
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=4)},
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=5)},
+            {"ip": "192.168.1.10", "username": "root", "event_type": "failed", "timestamp": now - timedelta(minutes=10)}, # 6th failed login
+            # Below threshold
+            {"ip": "10.0.0.1", "username": "admin", "event_type": "failed", "timestamp": now - timedelta(minutes=5)},
+            {"ip": "10.0.0.1", "username": "admin", "event_type": "failed", "timestamp": now - timedelta(minutes=4)},
+        ]
+    
+        db = FakeDB(events)
+        config = {"failed_login_threshold": 5, "time_window_minutes": 60} # Add time_window_minutes
+        alerts = detect_brute_force(db, config)
+    
+>       assert len(alerts) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_detector.py:188: AssertionError
+____________________ test_detect_brute_force_missing_fields ____________________
+
+    def test_detect_brute_force_missing_fields():
+        now = datetime.utcnow()
+        events = [
+            {"ip": "192.168.1.10", "event_type": "failed", "timestamp": now}, # Missing username
+            {"username": "root", "event_type": "failed", "timestamp": now}, # Missing ip
+            {"ip": "192.168.1.10", "username": "root", "timestamp": now}, # Missing event_type
+        ]
+        db = FakeDB(events)
+        config = {"failed_login_threshold": 1, "time_window_minutes": 60}
+        alerts = detect_brute_force(db, config)
+        assert isinstance(alerts, list)
+        # The detect_brute_force logic assigns "unknown" for missing fields and scrubs them.
+>       assert len(alerts) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests/test_detector.py:233: AssertionError
+____________________________ test_register_success _____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_success(client, mock_db_connection):  # Use mock_db_connection from conftest
+        # mock_db = mock_db_connection # Not needed, use mock_db_connection directly
+        # The MockCollection.find_one method works naturally based on its data
+        # mock_db.users.find_one.return_value = None # REMOVE: Do not set return_value on MockCollection methods
+        # mock_db.users.insert_one.reset_mock()  # REMOVE: Not needed for MockCollection
+        # mock_db.users.insert_one.return_value = MagicMock() # REMOVE: Not needed for MockCollection
+    
+        response = client.post("/register", json={
+            "username": "newuser",
+            "password": "newpassword"
+        })
+    
+>       assert response.status_code == 201, f"Registration failed with status {response.status_code}: {response.get_json()}"
+E       AssertionError: Registration failed with status 429: {'error': '5 per 1 minute'}
+E       assert 429 == 201
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_register.py:20: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________ test_register_existing_user __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_existing_user(client, mock_db_connection):  # Use mock_db_connection
+        # mock_db = mock_db_connection # Not needed
+        # Simulate that the user already exists by directly inserting into mock DB
+        # Store password as bytes
+        hashed_pass = bcrypt.hashpw(b"some_hashed_password", bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": "existinguser", "password": hashed_pass})
+    
+        # mock_db.users.find_one.return_value = {"username": "existinguser", "password": b"hashedpass"} # REMOVE: Not needed
+        # mock_db.users.insert_one.reset_mock()  # REMOVE: Not needed
+    
+        response = client.post("/register", json={
+            "username": "existinguser",
+            "password": "any"
+        })
+>       assert response.status_code == 409, f"Expected 409 Conflict, got {response.status_code}: {response.get_json()}"
+E       AssertionError: Expected 409 Conflict, got 429: {'error': '5 per 1 minute'}
+E       assert 429 == 409
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_register.py:44: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________________ test_status __________________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+
+    def test_status(client):
+        response = client.get("/status")
+        assert response.status_code == 200
+        data = response.get_json()
+        assert data["status"] == "ok"
+>       assert data["database_connected"] == True
+E       KeyError: 'database_connected'
+
+tests/test_routes_basic.py:18: KeyError
+_________________________________ test_metrics _________________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+
+    def test_metrics(client):
+        response = client.get("/metrics")
+        assert response.status_code == 200
+        data = response.get_json()
+        assert "metrics" in data
+>       assert "cpu_usage" in data
+E       AssertionError: assert 'cpu_usage' in {'metrics': {'cpu_usage': '20%', 'memory_usage': '50%'}}
+
+tests/test_routes_basic.py:25: AssertionError
+_ test_register_missing_fields[payload0-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password'] _
+
+client = <FlaskClient <Flask 'api.routes'>>, payload = {}
+expected_message = "Απαιτείται 'username' και 'password'"
+
+    @pytest.mark.parametrize("payload, expected_message", [
+        ({}, "Απαιτείται 'username' και 'password'"),
+        ({"username": "testuser"}, "Απαιτείται 'username' και 'password'"),
+        ({"password": "testpassword"}, "Απαιτείται 'username' και 'password'"),
+    ])
+    def test_register_missing_fields(client, payload, expected_message):
+        response = client.post("/register", json=payload)
+>       assert response.status_code == 400
+E       assert 429 == 400
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:35: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_ test_register_missing_fields[payload1-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password'] _
+
+client = <FlaskClient <Flask 'api.routes'>>, payload = {'username': 'testuser'}
+expected_message = "Απαιτείται 'username' και 'password'"
+
+    @pytest.mark.parametrize("payload, expected_message", [
+        ({}, "Απαιτείται 'username' και 'password'"),
+        ({"username": "testuser"}, "Απαιτείται 'username' και 'password'"),
+        ({"password": "testpassword"}, "Απαιτείται 'username' και 'password'"),
+    ])
+    def test_register_missing_fields(client, payload, expected_message):
+        response = client.post("/register", json=payload)
+>       assert response.status_code == 400
+E       assert 429 == 400
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:35: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_ test_register_missing_fields[payload2-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password'] _
+
+client = <FlaskClient <Flask 'api.routes'>>
+payload = {'password': 'testpassword'}
+expected_message = "Απαιτείται 'username' και 'password'"
+
+    @pytest.mark.parametrize("payload, expected_message", [
+        ({}, "Απαιτείται 'username' και 'password'"),
+        ({"username": "testuser"}, "Απαιτείται 'username' και 'password'"),
+        ({"password": "testpassword"}, "Απαιτείται 'username' και 'password'"),
+    ])
+    def test_register_missing_fields(client, payload, expected_message):
+        response = client.post("/register", json=payload)
+>       assert response.status_code == 400
+E       assert 429 == 400
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:35: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+____________________________ test_register_success _____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_success(client, mock_db_connection):
+        username = "newuser"
+        password = "newpassword"
+        response = client.post("/register", json={"username": username, "password": password})
+>       assert response.status_code == 201
+E       assert 429 == 201
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:42: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________ test_register_existing_user __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_existing_user(client, mock_db_connection):
+        username = "existinguser"
+        password = "existingpassword"
+    
+        # Pre-add user to mock DB
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": username, "password": hashed_password})
+    
+        response = client.post("/register", json={"username": username, "password": password})
+>       assert response.status_code == 409
+E       assert 429 == 409
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:59: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+___________________________ test_login_unregistered ____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+
+    def test_login_unregistered(client):
+        response = client.post("/login", json={"username": "nonexistent", "password": "password"})
+>       assert response.status_code == 401
+E       assert 429 == 401
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:64: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+______________________________ test_login_success ______________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_login_success(client, mock_db_connection):
+        username = "loginuser"
+        password = "loginpassword"
+    
+        # Pre-add user to mock DB
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": username, "password": hashed_password})
+    
+        # Mock bcrypt.checkpw to ensure it passes for this test
+        with patch('bcrypt.checkpw', return_value=True):
+            response = client.post("/login", json={"username": username, "password": password})
+>           assert response.status_code == 200
+E           assert 429 == 200
+E            +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:78: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+__________________________ test_login_wrong_password ___________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_login_wrong_password(client, mock_db_connection):
+        username = "wrongpassuser"
+        password = "correctpassword"
+        wrong_password = "wrongpassword"
+    
+        # Pre-add user to mock DB
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        mock_db_connection.users.insert_one({"username": username, "password": hashed_password})
+    
+        # Ensure bcrypt.checkpw is NOT mocked to allow actual password check to fail
+        response = client.post("/login", json={"username": username, "password": wrong_password})
+>       assert response.status_code == 401
+E       assert 429 == 401
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_routes_basic.py:92: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+____________________________ test_register_success _____________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_success(client, mock_db_connection):
+        # No need to set return_value for mock_db_connection.users.find_one
+        # The mock_db_connection.reset_data() in conftest ensures a clean state.
+        # The natural behavior of MockCollection.find_one will return None if user not found.
+    
+        response = client.post("/register", json={
+            "username": "newuser_test",
+            "password": "newpassword_test"
+        })
+    
+>       assert response.status_code == 201, f"Status code was {response.status_code}, expected 201. Response: {response.get_json()}"
+E       AssertionError: Status code was 429, expected 201. Response: {'error': '5 per 1 minute'}
+E       assert 429 == 201
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_user_and_report.py:26: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+_________________________ test_register_existing_user __________________________
+
+client = <FlaskClient <Flask 'api.routes'>>
+mock_db_connection = <conftest.MockDB object at 0x7fbf911b2d60>
+
+    def test_register_existing_user(client, mock_db_connection):
+        # Manually insert user to simulate existing user
+        hashed_pass = hashpw(b"some_hashed_password", gensalt())
+        mock_db_connection.users.insert_one({"username": "existing_user_test", "password": hashed_pass})
+    
+        response = client.post("/register", json={
+            "username": "existing_user_test",
+            "password": "any"
+        })
+>       assert response.status_code == 409, f"Status code was {response.status_code}, expected 409. Response: {response.get_json()}"
+E       AssertionError: Status code was 429, expected 409. Response: {'error': '5 per 1 minute'}
+E       assert 429 == 409
+E        +  where 429 = <WrapperTestResponse streamed [429 TOO MANY REQUESTS]>.status_code
+
+tests/test_user_and_report.py:45: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    api.routes:routes.py:439 HTTP Error 429: 5 per 1 minute
+=============================== warnings summary ===============================
+tests/test_api.py: 17 warnings
+tests/test_auth.py: 8 warnings
+tests/test_auth_jwt.py: 5 warnings
+tests/test_export.py: 3 warnings
+tests/test_ratelimit.py: 1 warning
+tests/test_register.py: 2 warnings
+tests/test_report_export.py: 5 warnings
+tests/test_routes_basic.py: 11 warnings
+tests/test_user_and_report.py: 5 warnings
+  /home/testuser/projects/logiq/venv/lib/python3.8/site-packages/flask/testing.py:118: DeprecationWarning: The '__version__' attribute is deprecated and will be removed in Werkzeug 3.1. Use feature detection or 'importlib.metadata.version("werkzeug")' instead.
+    "HTTP_USER_AGENT": f"werkzeug/{werkzeug.__version__}",
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_api.py::test_get_security_events_success - assert 500 == 200
+FAILED tests/test_api.py::test_get_events_pagination - assert 500 == 200
+FAILED tests/test_auth.py::test_register_success - assert 429 == 201
+FAILED tests/test_auth.py::test_register_existing_user - assert 429 == 409
+FAILED tests/test_auth.py::test_login_success - assert 429 == 200
+FAILED tests/test_auth.py::test_login_unregistered - assert 429 == 401
+FAILED tests/test_auth.py::test_login_incorrect_password - assert 429 == 401
+FAILED tests/test_auth.py::test_access_without_token - assert 200 == 401
+FAILED tests/test_auth.py::test_access_with_invalid_token - assert 200 == 422
+FAILED tests/test_auth_jwt.py::test_register_login_and_access - AssertionErro...
+FAILED tests/test_auth_jwt.py::test_register_existing_user - AssertionError: ...
+FAILED tests/test_auth_jwt.py::test_login_wrong_password - AssertionError: Ex...
+FAILED tests/test_auth_parser.py::test_parse_auth_log_valid[Jan  5 01:02:03 myhost sshd[1234]: Accepted password for alice from 192.0.2.1-expected0]
+FAILED tests/test_auth_parser.py::test_parse_auth_log_valid[Feb 14 23:59:59 server1 sshd[1234]: Failed password for bob from 10.0.0.5-expected1]
+FAILED tests/test_auth_parser.py::test_parse_auth_log_valid[Mar  9 12:00:00 hostX sshd[1234]: Failed password for invalid user eve from 203.0.113.9-expected2]
+FAILED tests/test_brute_force.py::test_detect_brute_force_basic - AttributeEr...
+FAILED tests/test_brute_force.py::test_detect_brute_force_no_alerts - Attribu...
+FAILED tests/test_brute_force.py::test_detect_brute_force_time_window - Attri...
+FAILED tests/test_brute_force.py::test_detect_brute_force_missing_fields - At...
+FAILED tests/test_brute_force.py::test_detect_brute_force_pipeline_and_scrubbing
+FAILED tests/test_db_mongo.py::test_insert_events_success - AttributeError: '...
+FAILED tests/test_db_mongo.py::test_insert_events_mongo_error - AttributeErro...
+FAILED tests/test_detector.py::test_detect_brute_force_basic - assert 0 == 1
+FAILED tests/test_detector.py::test_detect_brute_force_missing_fields - asser...
+FAILED tests/test_register.py::test_register_success - AssertionError: Regist...
+FAILED tests/test_register.py::test_register_existing_user - AssertionError: ...
+FAILED tests/test_routes_basic.py::test_status - KeyError: 'database_connected'
+FAILED tests/test_routes_basic.py::test_metrics - AssertionError: assert 'cpu...
+FAILED tests/test_routes_basic.py::test_register_missing_fields[payload0-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password']
+FAILED tests/test_routes_basic.py::test_register_missing_fields[payload1-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password']
+FAILED tests/test_routes_basic.py::test_register_missing_fields[payload2-\u0391\u03c0\u03b1\u03b9\u03c4\u03b5\u03af\u03c4\u03b1\u03b9 'username' \u03ba\u03b1\u03b9 'password']
+FAILED tests/test_routes_basic.py::test_register_success - assert 429 == 201
+FAILED tests/test_routes_basic.py::test_register_existing_user - assert 429 =...
+FAILED tests/test_routes_basic.py::test_login_unregistered - assert 429 == 401
+FAILED tests/test_routes_basic.py::test_login_success - assert 429 == 200
+FAILED tests/test_routes_basic.py::test_login_wrong_password - assert 429 == 401
+FAILED tests/test_user_and_report.py::test_register_success - AssertionError:...
+FAILED tests/test_user_and_report.py::test_register_existing_user - Assertion...
+ERROR tests/test_api.py::test_get_events_filters - assert 429 == 200
+ERROR tests/test_api.py::test_get_events_date_filters - assert 429 == 200
+ERROR tests/test_api.py::test_get_alerts_with_valid_threshold - assert 429 ==...
+ERROR tests/test_api.py::test_get_alerts_no_alerts - assert 429 == 200
+ERROR tests/test_api.py::test_get_alerts_with_time_window - assert 429 == 200
+ERROR tests/test_api.py::test_get_alerts - assert 429 == 200
+ERROR tests/test_api.py::test_export_json_success - assert 429 == 200
+ERROR tests/test_api.py::test_export_csv_success - assert 429 == 200
+ERROR tests/test_api.py::test_export_unsupported_format - assert 429 == 200
+ERROR tests/test_auth.py::test_access_with_correct_token - assert 429 == 200
+ERROR tests/test_export.py::test_export_json - assert 429 == 200
+ERROR tests/test_export.py::test_export_csv - assert 429 == 200
+ERROR tests/test_ratelimit.py::test_rate_limit_exceeded - assert 429 == 200
+ERROR tests/test_report_export.py::test_report_success - assert 429 == 200
+ERROR tests/test_report_export.py::test_export_json_success - assert 429 == 200
+ERROR tests/test_report_export.py::test_export_csv_success - assert 429 == 200
+ERROR tests/test_user_and_report.py::test_report_with_token - assert 429 == 200
+ERROR tests/test_user_and_report.py::test_export_json - assert 429 == 200
+ERROR tests/test_user_and_report.py::test_export_csv - assert 429 == 200
+============ 38 failed, 23 passed, 57 warnings, 19 errors in 6.82s =============

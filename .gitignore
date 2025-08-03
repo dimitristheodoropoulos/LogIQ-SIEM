@@ -1,0 +1,41 @@
+# Virtual environment
+venv/
+.venv/ # Προσθήκη για άλλες ονομασίες virtual environment
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.o
+*.so
+
+# Logs και βάσεις δεδομένων
+logs/
+*.log # Αγνοεί όλα τα αρχεία .log σε οποιονδήποτε φάκελο
+logs.db
+*.sqlite # Αγνοεί όλα τα αρχεία SQLite βάσεων δεδομένων
+
+# Ευαίσθητα αρχεία διαμόρφωσης
+.env
+config.yaml.local # Αν έχετε τοπικές ρυθμίσεις που δεν θέλετε να ανέβουν
+
+# Προσωρινά αρχεία και αρχεία export
+tmp/ # Γενικός φάκελος για προσωρινά αρχεία
+uploads/ # Ο φάκελος UPLOAD_FOLDER που χρησιμοποιείται για exports (αν δεν είναι μέσα στο tmp/)
+*.jsonl # Αν εξάγετε logs σε μορφή JSON Lines
+*.json
+*.csv
+*.pdf
+
+# Αποτελέσματα δοκιμών και κάλυψης κώδικα
+.coverage
+.pytest_cache/
+htmlcov/ # Φάκελος για αναφορές κάλυψης κώδικα σε HTML
+
+# IDE files
+.vscode/ # Για ρυθμίσεις Visual Studio Code
+.idea/ # Για ρυθμίσεις PyCharm
+*.iml
+
+# Λειτουργικό σύστημα
+.DS_Store # macOS
+Thumbs.db # Windows

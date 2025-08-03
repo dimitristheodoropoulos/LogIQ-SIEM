@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: logiq-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  logiq:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: logiq-app
+    depends_on:
+      - mongo
+    volumes:
+      - ..:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+
+volumes:
+  mongo_data:

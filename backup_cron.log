@@ -1,0 +1,30 @@
+----------------------------------------------------
+Starting MongoDB backup for database: 'logiq'
+Backup path: './backups/logiq_backup_20250802_020001'
+Timestamp: 20250802_020001
+----------------------------------------------------
+2025-08-02T02:00:01.893+0300	writing logiq.events to archive on stdout
+2025-08-02T02:00:01.894+0300	writing logiq.users to archive on stdout
+2025-08-02T02:00:01.897+0300	done dumping logiq.events (19 documents)
+2025-08-02T02:00:01.904+0300	done dumping logiq.users (16 documents)
+Backup completed successfully to './backups/logiq_backup_20250802_020001.gz'.
+File size: 4,0K
+----------------------------------------------------
+Applying retention policy: Deleting backups older than 7 days...
+Old backups cleaned. (Files deleted are listed above, if any.)
+----------------------------------------------------
+----------------------------------------------------
+Starting MongoDB backup for database: 'logiq'
+Backup path: './backups/logiq_backup_20250803_020001'
+Timestamp: 20250803_020001
+----------------------------------------------------
+2025-08-03T02:00:01.884+0300	writing logiq.events to archive on stdout
+2025-08-03T02:00:01.884+0300	writing logiq.users to archive on stdout
+2025-08-03T02:00:01.893+0300	done dumping logiq.events (21 documents)
+2025-08-03T02:00:01.899+0300	done dumping logiq.users (16 documents)
+Backup completed successfully to './backups/logiq_backup_20250803_020001.gz'.
+File size: 4,0K
+----------------------------------------------------
+Applying retention policy: Deleting backups older than 7 days...
+Old backups cleaned. (Files deleted are listed above, if any.)
+----------------------------------------------------

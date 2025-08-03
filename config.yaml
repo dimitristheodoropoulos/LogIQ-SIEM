@@ -1,0 +1,16 @@
+log_paths:
+  - logs/test_auth.log
+
+database:
+  type: mongodb
+  uri: "mongodb://localhost:27017"
+  db_name: "logiq"
+
+alerts:
+  failed_login_threshold: 5
+
+anomalies:
+  failed_login_user_threshold: 5   # Όριο αποτυχημένων logins ανά χρήστη για brute force ανίχνευση
+  failed_login_ip_threshold: 10    # Όριο αποτυχημένων logins ανά IP για brute force ανίχνευση
+  unusual_hour_min_logins: 2       # Όριο για "ασυνήθιστη" ώρα σύνδεσης: πόσες φορές πρέπει να έχει συνδεθεί
+                                   # ένας χρήστης σε μια ώρα για να θεωρηθεί συνηθισμένη.
