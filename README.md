@@ -28,6 +28,14 @@ Multi-OS Environment Analysis: Υποστήριξη για Linux (auth logs) κ�
 Scripting & Automation: Υλοποίηση σε Python για την αυτοματοποίηση της ανάλυσης.
 
 Security-by-Design: Χρήση JWT, Password Hashing (bcrypt) και Input Validation (jsonschema).
+Security Integration & Enterprise Ecosystem
+Το LogIQ δεν αποτελεί μια απομονωμένη λύση, αλλά ένα εργαλείο σχεδιασμένο να ενσωματώνεται σε σύγχρονα οικοσυστήματα ασφαλείας:
+
+Enterprise Integration: Το project υποστηρίζει τη διασύνδεση με industry-standard εργαλεία όπως το Wazuh, επιτρέποντας την κεντρική λήψη δεδομένων και τη βελτιστοποίηση του log aggregation.
+
+Business Continuity: Με ενσωματωμένα scripts για Automated Backup & Restore (MongoDB), το LogIQ προσομοιώνει τις πραγματικές απαιτήσεις για τη διατήρηση της ακεραιότητας των δεδομένων και τη διαθεσιμότητα των συστημάτων (Business Continuity).
+
+Cyber Resilience: Μέσω της αρχιτεκτονικής του, το εργαλείο επιδεικνύει την ικανότητα γεφύρωσης custom Python αυτοματισμών με καθιερωμένες πλατφόρμες SIEM, παρέχοντας στους αναλυτές τη δυνατότητα να ανταποκρίνονται με ταχύτητα και ακρίβεια σε σύνθετα περιστατικά κυβερνοασφάλειας.
 
 Εγκατάσταση και Εκτέλεση
 Disclaimer: Το LogIQ είναι ένα εργαλείο ανάλυσης ασφαλείας που σχεδιάστηκε για εκπαιδευτικούς σκοπούς και για την επίδειξη δυνατοτήτων SecOps σε προσομοιωμένα περιβάλλοντα.
