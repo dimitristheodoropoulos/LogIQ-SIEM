@@ -1,0 +1,89 @@
+.
+├── api
+│   ├── __init__.py
+│   ├── routes.py
+│   └── schemas.py
+├── attack_sim.py
+├── backup_mongo.sh
+├── bcrypt
+├── cli
+│   ├── __init__.py
+│   └── runner.py
+├── config.yaml
+├── coverage_report.txt
+├── create_admin.py
+├── csv
+├── db
+│   ├── db_mongo.py
+│   ├── db_sqlite.py
+│   └── __init__.py
+├── detectors
+│   ├── anomalies.py
+│   ├── brute_force.py
+│   └── __init__.py
+├── docker
+│   ├── attacker.py
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── event.json
+│   └── requirements.txt
+├── export_logs.py
+├── functools
+├── install_logiq_service.sh
+├── io
+├── json
+├── LICENSE
+├── local_structure_logiq.txt
+├── log_collector_linux.py
+├── log_collector.ps1
+├── logging
+├── logiq_siem.db
+├── main.py
+├── os
+├── packages-microsoft-prod.deb
+├── parsers
+│   ├── auth_parser.py
+│   └── __init__.py
+├── project_structure.txt
+├── project_tree.txt
+├── pytest_output.txt
+├── readme_local.txt
+├── README.md
+├── reports
+│   ├── __init__.py
+│   └── report_generator.py
+├── requirements.txt
+├── restore_mongo.sh
+├── siem_monitor.py
+├── siem_summary.py
+├── sys
+├── test_parse_auth.py
+├── tests
+│   ├── conftest.py
+│   ├── test_anomalies.py
+│   ├── test_api.py
+│   ├── test_api_schemas.py
+│   ├── test_auth_jwt.py
+│   ├── test_auth_parser.py
+│   ├── test_auth.py
+│   ├── test_brute_force.py
+│   ├── test_cli_runner.py
+│   ├── test_config.py
+│   ├── test_db_mongo.py
+│   ├── test_db_sqlite.py
+│   ├── test_detector.py
+│   ├── test_export_logs.py
+│   ├── test_export.py
+│   ├── test_log_collector_linux.py
+│   ├── test_main.py
+│   ├── test_ratelimit.py
+│   ├── test_register.py
+│   ├── test_report_export.py
+│   ├── test_report_generator.py
+│   ├── test_siem_summary.py
+│   └── test_user_and_report.py
+├── utils
+│   └── config.py
+└── web_dashboard.py
+
+10 directories, 77 files

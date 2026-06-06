@@ -1,0 +1,26 @@
+# Βασικές διαδρομές logs
+log_paths:
+  - logs/test_auth.log
+
+# Ρυθμίσεις Ασφαλείας
+JWT_SECRET_KEY: "dimitris_super_secret_key_change_me"
+SECRET_KEY: "flask_session_secret_key"
+
+# Ρυθμίσεις Βάσης Δεδομένων
+DATABASE_TYPE: "mongo"
+DATABASE_URI: "logiq_siem.db"
+
+# Χρήση του ονόματος του service 'logiq-mongo' για επικοινωνία εντός Docker δικτύου
+MONGO_URI: "mongodb://logiq-mongo:27017"
+MONGO_DB_NAME: "logiq"
+
+# Ρυθμίσεις Ειδοποιήσεων
+alerts:
+  failed_login_threshold: 2
+
+# Ρυθμίσεις Ανίχνευσης Ανωμαλιών
+anomalies:
+  failed_login_user_threshold: 2
+  failed_login_ip_threshold: 5
+  unusual_hour_min_logins: 1
+  min_events_for_baseline: 2

@@ -1,0 +1,59 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: logiq-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+    container_name: logiq-elastic
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+
+  logiq:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: logiq-app
+    depends_on:
+      - mongo
+      - elasticsearch
+    volumes:
+      - ..:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MONGO_URI=mongodb://logiq-mongo:27017/logiq
+      - ELASTICSEARCH_URL=http://logiq-elastic:9200
+    ports:
+      - "5000:5000"
+
+  dashboard:
+    image: python:3.9-slim
+    container_name: logiq-web-ui
+    volumes:
+      - ..:/app
+    working_dir: /app
+    command: >
+      sh -c "pip install streamlit requests pandas plotly && 
+             streamlit run web_dashboard.py --server.port=8501 --server.address=0.0.0.0"
+    ports:
+      - "8501:8501"
+    depends_on:
+      - logiq
+
+volumes:
+  mongo_data:
