@@ -1,4 +1,5 @@
 import sys
+import os
 import argparse
 from flask import Flask
 from flask_jwt_extended import JWTManager
@@ -17,10 +18,11 @@ class CustomFlask(Flask):
 def create_app(config: dict = None, db_type: str = None) -> CustomFlask:
     app = CustomFlask(__name__)
     
+    # Χρήση περιβαλλοντικών μεταβλητών για ασφάλεια (Production Ready)
     app.config.update(
         DATABASE_TYPE=db_type or "sqlite",
-        DATABASE_URI=":memory:",
-        JWT_SECRET_KEY="super-secret-key"
+        DATABASE_URI=os.getenv("DATABASE_URI", ":memory:"),
+        JWT_SECRET_KEY=os.getenv("JWT_SECRET_KEY", "dev-secret-key-do-not-use-in-prod")
     )
     if config:
         app.config.update(config)
