@@ -28,16 +28,15 @@ jobs:
 
       - name: Run flake8 (Syntax Check Only)
         run: |
-          # Σταματάει το build μόνο αν υπάρχουν Python syntax errors ή undefined variables.
-          # Αγνοεί τα formatting micro-errors (PEP8) για να μην σπάει άδικα το CI.
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv,.venv,env,ENV,__pycache__
+          # Σταματάει το build μόνο αν υπάρχουν σοβαρά Python syntax errors.
+          # Εξαιρούμε ρητά τους φακέλους backup για να μην επηρεάζουν το CI.
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv,.venv,env,ENV,__pycache__,backup_logiq,tests_backup
 
       - name: Run Bandit security scan
         run: |
-          # Εκτελεί το security scan μεμονωμένα. Αν βρει warnings δεν κρασάρει το build (επιτρέπει exit code 0)
-          bandit -r . --exclude ./venv,./.venv,./tests -ll || true
+          # Security scan στην ενεργή εφαρμογή (εξαιρούμε τα backups)
+          bandit -r . --exclude ./venv,./.venv,./tests,./backup_logiq,./tests_backup -ll || true
 
       - name: Run tests
         run: |
-          # Εκτέλεση των tests αν υπάρχουν, χωρίς να κρασάρει η υποδομή αν δεν βρει αρχεία
           PYTHONPATH=. pytest -v --maxfail=1 --disable-warnings || echo "No tests specified or completed"
