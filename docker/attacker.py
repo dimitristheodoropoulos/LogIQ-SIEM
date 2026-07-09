@@ -1,6 +1,6 @@
 import requests
 import time
-from datetime import datetime  # Προσθήκη για την ώρα
+from datetime import datetime, timezone  # ΔΙΟΡΘΩΣΗ: Προσθήκη του timezone για το UTC
 
 # Το TOKEN σου παραμένει το ίδιο
 TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MjgyNjAxNCwianRpIjoiYmRkZWE0N2QtZDAxYS00Nzc1LWFlMjgtMGRmYzI0YTNiMjNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNzcyODI2MDE0LCJjc3JmIjoiOTljNGJiNGItYzliYS00YTQ0LTgyZmQtM2E5MDg2ZDNlZGJkIiwiZXhwIjoxNzcyODI2OTE0fQ.lFX6KUEc3xNdwr-UEQWMEgZvuBrKhq2DIE7bK29i1X0" 
